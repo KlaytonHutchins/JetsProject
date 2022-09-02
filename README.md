@@ -1,7 +1,7 @@
 # JetsProject
 
-##Details
+## Details
 
-##What I Learned
+## What I Learned
 
-##Technologies Used
+## Technologies Used
