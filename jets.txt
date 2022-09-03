@@ -1,2 +1,5 @@
-Passenger, Cessna 172, 20, 100, 12000
-Cargo, C-17, 250, 500, 300000
+FighterJet, F/A-18E, 1.4, 2070, 52000000
+CargoPlane, C-17, 0.75, 2700, 340000000
+ElectronicWarfarePlane, E-2D, 0.52, 1680, 41000000
+FighterJet, F-16, 2.05, 2620, 40000000
+CargoPlane, C-5, 0.79, 8100, 160000000
