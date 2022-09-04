@@ -3,6 +3,7 @@ package com.skilldistillery.jets.app;
 import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.Airfield;
+import com.skilldistillery.jets.entities.Airplane;
 
 public class JetsApplication {
 	

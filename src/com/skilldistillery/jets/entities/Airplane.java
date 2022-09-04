@@ -7,17 +7,18 @@ public abstract class Airplane {
 	private int range;
 	private long price;
 	
-	public Airplane() { }
+	public Airplane(String model, double speed, int range, long price) {
+		this.model = model;
+		this.speed = speed;
+		this.range = range;
+		this.price = price;
+	}
 	
 	public void fly() {
-		
+		double timeOfFlight = range / speed;
+		System.out.println("Model: " + model + ", Speed:" + speed + ", Range:" + range +  ", Price:" + price + " is flying for " + timeOfFlight + " hours");
 	}
 	
-	public double getSpeedInMach() {
-		double speedInMach = 0;
-		return speedInMach;
-	}
-
 	public String getModel() {
 		return model;
 	}
