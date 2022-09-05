@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.Airfield;
 import com.skilldistillery.jets.entities.Airplane;
+import com.skilldistillery.jets.entities.CargoCarrier;
 import com.skilldistillery.jets.entities.CargoPlane;
+import com.skilldistillery.jets.entities.CombatReady;
 import com.skilldistillery.jets.entities.ElectronicWarfarePlane;
 import com.skilldistillery.jets.entities.FighterJet;
 
@@ -33,12 +35,14 @@ public class JetsApplication {
 			}
 			userStillSelecting = implementUserSelection(userSelection);
 		}
-
+		System.out.println("Thanks for visiting the Airfield!");
 	}
 
 	public void displayUserMenu() {
+		System.out.println("--------------------------------");
 		System.out.println("1. List fleet\n2. Fly all planes\n3. View fastest plane\n4. View plane with longest range"
 				+ "\n5. Load all cargo planes\n6. Dogfight!\n7. Add a plane to Fleet\n8. Remove a plane from Fleet\n9. Quit");
+		System.out.println("--------------------------------");
 	}
 
 	public boolean implementUserSelection(int menuNum) {
@@ -62,7 +66,7 @@ public class JetsApplication {
 					idxFastestPlane = i;
 				}
 			}
-			System.out.println(airfield.fleet.get(idxFastestPlane));
+			System.out.println("The fastest plane in the fleet is: " + airfield.fleet.get(idxFastestPlane));
 			return true;
 		}
 		case 4: {
@@ -72,12 +76,12 @@ public class JetsApplication {
 					idxLongestRangePlane = i;
 				}
 			}
-			System.out.println(airfield.fleet.get(idxLongestRangePlane));
+			System.out.println("The plane with the longest range in the fleet is: " + airfield.fleet.get(idxLongestRangePlane));
 			return true;
 		}
 		case 5: {
 			for (int i = 0; i < airfield.fleet.size(); i++) {
-				if ((airfield.fleet.get(i)) instanceof CargoPlane) {
+				if ((airfield.fleet.get(i)) instanceof CargoCarrier) {
 					CargoPlane plane = (CargoPlane) airfield.fleet.get(i);
 					plane.loadCargo();
 				}
@@ -86,7 +90,7 @@ public class JetsApplication {
 		}
 		case 6: {
 			for (int i = 0; i < airfield.fleet.size(); i++) {
-				if ((airfield.fleet.get(i)) instanceof FighterJet) {
+				if ((airfield.fleet.get(i)) instanceof CombatReady) {
 					FighterJet plane = (FighterJet) airfield.fleet.get(i);
 					plane.fight();
 				}

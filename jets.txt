@@ -1,5 +1,5 @@
-FighterJet, F/A-18E, 1.4, 2070, 52000000
-CargoPlane, C-17, 0.75, 2700, 340000000
-ElectronicWarfarePlane, E-2D, 0.52, 1680, 41000000
-FighterJet, F-16, 2.05, 2620, 40000000
-CargoPlane, C-5, 0.79, 8100, 160000000
+FighterJet, F/A-18E, 1074, 2070, 52000000
+CargoPlane, C-17, 575, 2700, 340000000
+ElectronicWarfarePlane, E-2D, 400, 1680, 41000000
+FighterJet, F-16, 1572, 2620, 40000000
+CargoPlane, C-5, 606, 8100, 160000000

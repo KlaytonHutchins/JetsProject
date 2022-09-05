@@ -15,7 +15,7 @@ public abstract class Airplane {
 	}
 	
 	public void fly() {
-		double timeOfFlight = range / (speed * 767.269);
+		double timeOfFlight = range / speed;
 		System.out.println("Model: " + model + ", Speed:" + speed + ", Range:" + range +  ", Price:" + price + " is flying for " + String.format("%.2f", timeOfFlight) + " hours");
 	}
 	
