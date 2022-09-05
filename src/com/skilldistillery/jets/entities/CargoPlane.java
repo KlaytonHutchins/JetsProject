@@ -7,7 +7,7 @@ public class CargoPlane extends Airplane implements CargoCarrier{
 	}
 	
 	public void loadCargo() {
-		
+		System.out.println("loading cargo");
 	}
 	
 }

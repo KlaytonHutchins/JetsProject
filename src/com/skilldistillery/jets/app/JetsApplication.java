@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.Airfield;
 import com.skilldistillery.jets.entities.Airplane;
+import com.skilldistillery.jets.entities.CargoPlane;
+import com.skilldistillery.jets.entities.FighterJet;
 
 public class JetsApplication {
 
@@ -21,12 +23,15 @@ public class JetsApplication {
 		for (Airplane ap : airfield.fleet) {
 			ap.fly();
 		}
-		displayUserMenu();
-		int userSelection = sc.nextInt();
-		while (userSelection < 1 || userSelection > 9) {
-			userSelection = sc.nextInt();
+		boolean userStillSelecting = true;
+		while (userStillSelecting) {
+			displayUserMenu();
+			int userSelection = sc.nextInt();
+			while (userSelection < 1 || userSelection > 9) {
+				userSelection = sc.nextInt();
+			}
+			userStillSelecting = implementUserSelection(userSelection);
 		}
-		implementUserSelection(userSelection);
 
 	}
 
@@ -35,17 +40,20 @@ public class JetsApplication {
 				+ "\n5. Load all cargo planes\n6. Dogfight!\n7. Add a plane to Fleet\n8. Remove a plane from Fleet\n9. Quit");
 	}
 
-	public void implementUserSelection(int menuNum) {
+	public boolean implementUserSelection(int menuNum) {
 		switch (menuNum) {
 		case 1: {
 			for (Airplane ap : airfield.fleet) {
-				System.out.println(ap);;
+				System.out.println(ap);
+				;
 			}
+			return true;
 		}
-		case 2:{
+		case 2: {
 			for (Airplane ap : airfield.fleet) {
 				ap.fly();
 			}
+			return true;
 		}
 		case 3: {
 			int idxFastestPlane = 0;
@@ -55,20 +63,50 @@ public class JetsApplication {
 				}
 			}
 			System.out.println(airfield.fleet.get(idxFastestPlane));
+			return true;
 		}
+		case 4: {
+			int idxLongestRangePlane = 0;
+			for (int i = 0; i < airfield.fleet.size(); i++) {
+				if ((airfield.fleet.get(i)).getRange() > (airfield.fleet.get(idxLongestRangePlane)).getRange()) {
+					idxLongestRangePlane = i;
+				}
+			}
+			System.out.println(airfield.fleet.get(idxLongestRangePlane));
+			return true;
+		}
+		case 5: {
+			for (int i = 0; i < airfield.fleet.size(); i++) {
+				if ((airfield.fleet.get(i)) instanceof CargoPlane) {
+					CargoPlane plane = (CargoPlane) airfield.fleet.get(i);
+					plane.loadCargo();
+				}
+			}
+			return true;
+		}
+		case 6: {
+			for (int i = 0; i < airfield.fleet.size(); i++) {
+				if ((airfield.fleet.get(i)) instanceof FighterJet) {
+					FighterJet plane = (FighterJet) airfield.fleet.get(i);
+					plane.fight();
+				}
+			}
+			return true;
+		}
+		case 7: {
 
-		case 4:
+			return true;
+		}
+		case 8: {
 
-		case 5:
-
-		case 6:
-
-		case 7:
-
-		case 8:
-
-		case 9:
-
+			return true;
+		}
+		case 9: {
+			return false;
+		}
+		default: {
+			return true;
+		}
 		}
 	}
 
