@@ -22,18 +22,21 @@ public class Airfield {
 
 				String[] params = line.split(", ");
 				switch (params[0]) {
-				case "FighterJet":
+				case "FighterJet": {
 					fleet.add(new FighterJet(params[1], Double.parseDouble(params[2]), Integer.parseInt(params[3]),
 							Long.parseLong(params[4])));
 					break;
-				case "CargoPlane":
+				}
+				case "CargoPlane": {
 					fleet.add(new CargoPlane(params[1], Double.parseDouble(params[2]), Integer.parseInt(params[3]),
 							Long.parseLong(params[4])));
 					break;
-				case "ElectronicWarfarePlane":
+				}
+				case "ElectronicWarfarePlane": {
 					fleet.add(new ElectronicWarfarePlane(params[1], Double.parseDouble(params[2]),
 							Integer.parseInt(params[3]), Long.parseLong(params[4])));
 					break;
+				}
 				}
 
 			}

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.skilldistillery.jets.entities.Airfield;
 import com.skilldistillery.jets.entities.Airplane;
 import com.skilldistillery.jets.entities.CargoPlane;
+import com.skilldistillery.jets.entities.ElectronicWarfarePlane;
 import com.skilldistillery.jets.entities.FighterJet;
 
 public class JetsApplication {
@@ -45,7 +46,6 @@ public class JetsApplication {
 		case 1: {
 			for (Airplane ap : airfield.fleet) {
 				System.out.println(ap);
-				;
 			}
 			return true;
 		}
@@ -94,11 +94,45 @@ public class JetsApplication {
 			return true;
 		}
 		case 7: {
-
+			System.out.println(
+					"Enter the plane you would like to add.\n1 for Fighter Jet, 2 for Cargo Plane, 3 for Electronic Warfare Plane");
+			int airplaneType = sc.nextInt();
+			sc.nextLine();
+			System.out.print("Enter the Model of the Plane: ");
+			String modelToAdd = sc.nextLine();
+			System.out.print("Enter the Speed of the Plane: ");
+			double speedToAdd = sc.nextDouble();
+			sc.nextLine();
+			System.out.print("Enter the Range of the Plane: ");
+			int rangeToAdd = sc.nextInt();
+			sc.nextLine();
+			System.out.print("Enter the Price of the Plane: ");
+			long priceToAdd = sc.nextLong();
+			sc.nextLine();
+			switch (airplaneType) {
+			case 1: {
+				airfield.fleet.add(new FighterJet(modelToAdd, speedToAdd, rangeToAdd, priceToAdd));
+				break;
+			}
+			case 2: {
+				airfield.fleet.add(new CargoPlane(modelToAdd, speedToAdd, rangeToAdd, priceToAdd));
+				break;
+			}
+			case 3: {
+				airfield.fleet.add(new ElectronicWarfarePlane(modelToAdd, speedToAdd, rangeToAdd, priceToAdd));
+				break;
+			}
+			}
 			return true;
 		}
 		case 8: {
-
+			System.out.println("Using the following list, please enter the number corresponding to the plane you would like to remove.");
+			for (int i = 0; i < airfield.fleet.size(); i++) {
+				System.out.println((i + 1) + ". " + airfield.fleet.get(i));
+			}
+			int planeToRemove = sc.nextInt();
+			sc.nextLine();
+			airfield.fleet.remove(planeToRemove-1);
 			return true;
 		}
 		case 9: {
