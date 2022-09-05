@@ -23,22 +23,25 @@ public class JetsApplication {
 	public void launch() {
 
 		airfield = new Airfield();
-		for (Airplane ap : airfield.fleet) {
-			ap.fly();
-		}
+		
 		boolean userStillSelecting = true;
 		while (userStillSelecting) {
 			displayUserMenu();
 			int userSelection = sc.nextInt();
+			
 			while (userSelection < 1 || userSelection > 9) {
+				System.err.print("Invalid entry, please choose a number from 1 - 9: ");
 				userSelection = sc.nextInt();
 			}
+			
 			userStillSelecting = implementUserSelection(userSelection);
 		}
+		
 		System.out.println("Thanks for visiting the Airfield!");
 	}
 
 	public void displayUserMenu() {
+		
 		System.out.println("--------------------------------");
 		System.out.println("1. List fleet\n2. Fly all planes\n3. View fastest plane\n4. View plane with longest range"
 				+ "\n5. Load all cargo planes\n6. Dogfight!\n7. Add a plane to Fleet\n8. Remove a plane from Fleet\n9. Quit");
@@ -46,6 +49,7 @@ public class JetsApplication {
 	}
 
 	public boolean implementUserSelection(int menuNum) {
+		
 		switch (menuNum) {
 		case 1: {
 			for (Airplane ap : airfield.fleet) {
