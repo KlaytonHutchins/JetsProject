@@ -23,33 +23,33 @@ public class JetsApplication {
 	public void launch() {
 
 		airfield = new Airfield();
-		
+
 		boolean userStillSelecting = true;
 		while (userStillSelecting) {
 			displayUserMenu();
 			int userSelection = sc.nextInt();
-			
-			while (userSelection < 1 || userSelection > 9) {
-				System.err.print("Invalid entry, please choose a number from 1 - 9: ");
+
+			while (userSelection < 1 || userSelection > 10) {
+				System.err.print("Invalid entry, please choose a number from 1 - 10: ");
 				userSelection = sc.nextInt();
 			}
-			
+
 			userStillSelecting = implementUserSelection(userSelection);
 		}
-		
+
 		System.out.println("Thanks for visiting the Airfield!");
 	}
 
 	public void displayUserMenu() {
-		
-		System.out.println("--------------------------------");
+
+		System.out.println("--------------------------------------");
 		System.out.println("1. List fleet\n2. Fly all planes\n3. View fastest plane\n4. View plane with longest range"
-				+ "\n5. Load all cargo planes\n6. Dogfight!\n7. Add a plane to Fleet\n8. Remove a plane from Fleet\n9. Quit");
-		System.out.println("--------------------------------");
+				+ "\n5. View plane with longest flight time\n6. Load all cargo planes\n7. Dogfight!\n8. Add a plane to Fleet\n9. Remove a plane from Fleet\n10. Quit");
+		System.out.println("--------------------------------------");
 	}
 
 	public boolean implementUserSelection(int menuNum) {
-		
+
 		switch (menuNum) {
 		case 1: {
 			for (Airplane ap : airfield.fleet) {
@@ -80,10 +80,24 @@ public class JetsApplication {
 					idxLongestRangePlane = i;
 				}
 			}
-			System.out.println("The plane with the longest range in the fleet is: " + airfield.fleet.get(idxLongestRangePlane));
+			System.out.println(
+					"The plane with the longest range in the fleet is: " + airfield.fleet.get(idxLongestRangePlane));
 			return true;
 		}
 		case 5: {
+			int idxLongestFlightTime = 0;
+			for (int i = 0; i < airfield.fleet.size(); i++) {
+				if ((airfield.fleet.get(i)).getRange()
+						/ (airfield.fleet.get(i)).getSpeed() > (airfield.fleet.get(idxLongestFlightTime)).getRange()
+								/ (airfield.fleet.get(idxLongestFlightTime)).getSpeed()) {
+					idxLongestFlightTime = i;
+				}
+			}
+			System.out.println("The plane with the longest flight time in the fleet is: "
+					+ airfield.fleet.get(idxLongestFlightTime));
+			return true;
+		}
+		case 6: {
 			for (int i = 0; i < airfield.fleet.size(); i++) {
 				if ((airfield.fleet.get(i)) instanceof CargoCarrier) {
 					CargoPlane plane = (CargoPlane) airfield.fleet.get(i);
@@ -92,7 +106,7 @@ public class JetsApplication {
 			}
 			return true;
 		}
-		case 6: {
+		case 7: {
 			for (int i = 0; i < airfield.fleet.size(); i++) {
 				if ((airfield.fleet.get(i)) instanceof CombatReady) {
 					FighterJet plane = (FighterJet) airfield.fleet.get(i);
@@ -101,7 +115,7 @@ public class JetsApplication {
 			}
 			return true;
 		}
-		case 7: {
+		case 8: {
 			System.out.println(
 					"Enter the plane you would like to add.\n1 for Fighter Jet, 2 for Cargo Plane, 3 for Electronic Warfare Plane");
 			int airplaneType = sc.nextInt();
@@ -133,17 +147,18 @@ public class JetsApplication {
 			}
 			return true;
 		}
-		case 8: {
-			System.out.println("Using the following list, please enter the number corresponding to the plane you would like to remove.");
+		case 9: {
+			System.out.println(
+					"Using the following list, please enter the number corresponding to the plane you would like to remove.");
 			for (int i = 0; i < airfield.fleet.size(); i++) {
 				System.out.println((i + 1) + ". " + airfield.fleet.get(i));
 			}
 			int planeToRemove = sc.nextInt();
 			sc.nextLine();
-			airfield.fleet.remove(planeToRemove-1);
+			airfield.fleet.remove(planeToRemove - 1);
 			return true;
 		}
-		case 9: {
+		case 10: {
 			return false;
 		}
 		default: {
