@@ -37,7 +37,7 @@ public class JetsApplication {
 			userStillSelecting = implementUserSelection(userSelection);
 		}
 
-		System.out.println("Thanks for visiting the Airfield!");
+		System.out.println("Thank you for visiting the Airfield!");
 	}
 
 	public void displayUserMenu() {
@@ -120,17 +120,22 @@ public class JetsApplication {
 					"Enter the plane you would like to add.\n1 for Fighter Jet, 2 for Cargo Plane, 3 for Electronic Warfare Plane");
 			int airplaneType = sc.nextInt();
 			sc.nextLine();
+			
 			System.out.print("Enter the Model of the Plane: ");
 			String modelToAdd = sc.nextLine();
+			
 			System.out.print("Enter the Speed of the Plane: ");
 			double speedToAdd = sc.nextDouble();
 			sc.nextLine();
+			
 			System.out.print("Enter the Range of the Plane: ");
 			int rangeToAdd = sc.nextInt();
 			sc.nextLine();
+			
 			System.out.print("Enter the Price of the Plane: ");
 			long priceToAdd = sc.nextLong();
 			sc.nextLine();
+			
 			switch (airplaneType) {
 			case 1: {
 				airfield.fleet.add(new FighterJet(modelToAdd, speedToAdd, rangeToAdd, priceToAdd));
@@ -154,6 +159,10 @@ public class JetsApplication {
 				System.out.println((i + 1) + ". " + airfield.fleet.get(i));
 			}
 			int planeToRemove = sc.nextInt();
+			while (planeToRemove < 1 || planeToRemove > airfield.fleet.size()) {
+				System.err.print("Invalid entry, please choose a number from 1 - " + airfield.fleet.size() + ": ");
+				planeToRemove = sc.nextInt();
+			}
 			sc.nextLine();
 			airfield.fleet.remove(planeToRemove - 1);
 			return true;
