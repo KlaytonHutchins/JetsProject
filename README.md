@@ -14,6 +14,8 @@ I gained more experience in utilizing Interfaces and Superclasses/Subclasses.
 ## Technologies Used
 Java, Eclipse, Git
 
+## Contact Information
+
 Email:
 klaytonhutchins@gmail.com
 
