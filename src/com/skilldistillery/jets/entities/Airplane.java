@@ -15,8 +15,8 @@ public abstract class Airplane {
 	}
 	
 	public void fly() {
-		double timeOnStation = range / speed;
-		System.out.println("Model: " + model + ", Speed:" + speed + ", Range:" + range +  ", Price:" + price + " is flying for " + String.format("%.2f", timeOnStation) + " hours");
+		double timeOfFlight = range / speed;
+		System.out.println("Model: " + model + ", Speed: " + speed + " MPH, Range: " + range +  " Miles, Price: $" + price + " is flying for " + String.format("%.2f", timeOfFlight) + " hours");
 	}
 	
 	public String getModel() {
@@ -53,7 +53,7 @@ public abstract class Airplane {
 
 	@Override
 	public String toString() {
-		return "Model: " + model + ", Speed:" + speed + ", Range:" + range +  ", Price:" + price;
+		return "Model: " + model + ", Speed: " + speed + " MPH, Range: " + range +  " Miles, Price: $" + price;
 	}
 	
 	
